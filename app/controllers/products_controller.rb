@@ -41,6 +41,5 @@ class ProductsController < ApplicationController
     product.destroy
     render "destroy.html.erb"
   end
-
 end
 
