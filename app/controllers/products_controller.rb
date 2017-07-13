@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(title: params[:form_name], price: params[:form_price], description: params[:form_description], image: params[:form_image])
+    product = Product.new(name: params[:form_name], price: params[:form_price], description: params[:form_description], image: params[:form_image])
     product.save
     render "create.html.erb"
   end
@@ -26,6 +26,21 @@ class ProductsController < ApplicationController
     render "edit.html.erb"
   end
 
+  def update
+    product = Product.find_by(id: params[:id])
+    product.name = params[:name]
+    product.price = params[:price]
+    product.image = params[:image]
+    product.description = params[:description]
+    product.save
+    render "update.html.erb"
+  end
+
+  def destroy
+    product = Product.find_by(id: params[:id])
+    product.destroy
+    render "destroy.html.erb"
+  end
 
 end
 
